@@ -7,6 +7,7 @@ const HotelRoutes = require("./routes/HotelRoute.js");
 const RoomRoutes = require("./routes/RoomRoute.js");
 const bodyParser = require('body-parser')
 const cors = require("cors")
+const cookieParser = require('cookie-parser')
 
 const app = express()
 dotenv.config()
@@ -30,6 +31,7 @@ mongoose.connection.on('connected', () => {
 // setup
 app.use(bodyParser.json())
 app.use(cors())
+app.use(cookieParser())
 
 // routers
 app.get('/', (req, res) => res.send('okk'))

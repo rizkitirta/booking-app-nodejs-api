@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-// const { Schema } = mongoose
 
 const Hotel = new mongoose.Schema({
     name: {

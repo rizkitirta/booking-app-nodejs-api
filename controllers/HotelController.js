@@ -9,12 +9,13 @@ const findAll = async (req, res) => {
     }
 }
 
-const findByID = async (req, res) => {
+const findByID = async (req, res, next) => {
     try {
         const data = await Hotel.findById(req.params.id)
         res.status(201).json({ success: true, data })
     } catch (err) {
-        res.status(500).json(err)
+        next(err)
+        // res.status(500).json(err)
     }
 }
 

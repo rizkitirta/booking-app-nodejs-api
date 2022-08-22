@@ -38,6 +38,19 @@ app.use('/api/v1/user', UserRoutes)
 app.use('/api/v1/hotel', HotelRoutes)
 app.use('/api/v1/room', RoomRoutes)
 
+// error handler
+app.use((err, req, res, next) => {
+    const errorStatus = err.status || 500
+    const errorMessage = err.message || 'Something went wrong!'
+
+    return res.status(errorStatus).json({
+        success: false,
+        status: errorStatus,
+        message: errorMessage,
+        stack: err.stack
+    })
+})
+
 app.listen(3001, () => {
     mongoConnect();
     console.log('server running on port 3001');

@@ -30,9 +30,10 @@ const store = async (req, res, next) => {
 
 const update = async (req, res, next) => {
     try {
-        const update = await Hotel.findByIdAndUpdate(req.params.id, {
-            $set: req.body
-        }, {
+        const update = await Hotel.findByIdAndUpdate(req.params.id,
+            {
+                $set: req.body
+            }, {
             new: true
         })
         res.status(201).json({ success: true, data: update })

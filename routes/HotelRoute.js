@@ -3,9 +3,9 @@ const HotelController = require('../controllers/HotelController')
 const router = express.Router()
 
 router.get('/',HotelController.findAll)
-router.get('/',HotelController.findByID)
+router.get('/:id',HotelController.findByID)
 router.post('/',HotelController.store)
-router.put('/',HotelController.update)
-router.delete('/',HotelController.destroy)
+router.put('/:id',HotelController.update)
+router.delete('/:id',HotelController.destroy)
 
 module.exports = router

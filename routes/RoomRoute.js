@@ -3,9 +3,9 @@ const RoomController = require('../controllers/RoomController')
 const router = express.Router()
 
 router.get('/',RoomController.findAll)
-router.get('/',RoomController.findByID)
-router.post('/',RoomController.store)
-router.put('/',RoomController.update)
-router.delete('/',RoomController.destroy)
+router.get('/:id',RoomController.findByID)
+router.post('/:hotelId',RoomController.store)
+router.put('/:id',RoomController.update)
+router.delete('/:id/hotelId/:hotelId/',RoomController.destroy)
 
 module.exports = router

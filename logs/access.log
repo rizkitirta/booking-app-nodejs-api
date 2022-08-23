@@ -1,0 +1,1 @@
+::1 - - [23/Aug/2022:14:45:33 +0000] "DELETE /api/v1/room/6304df7681d579ae2c567101/hotelId/63038591d0ed34b339c53f1f HTTP/1.1" 201 26 "-" "PostmanRuntime/7.29.2"

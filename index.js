@@ -8,6 +8,10 @@ const RoomRoutes = require("./routes/RoomRoute.js");
 const bodyParser = require('body-parser')
 const cors = require("cors")
 const cookieParser = require('cookie-parser')
+var fs = require('fs')
+var morgan = require('morgan')
+var path = require('path')
+
 
 const app = express()
 dotenv.config()
@@ -32,6 +36,11 @@ mongoose.connection.on('connected', () => {
 app.use(bodyParser.json())
 app.use(cors())
 app.use(cookieParser())
+// create a write stream (in append mode)
+var accessLogStream = fs.createWriteStream(path.join(__dirname, 'logs/access.log'), { flags: 'a' })
+
+// setup the logger
+app.use(morgan('combined', { stream: accessLogStream }))
 
 // routers
 app.get('/', (req, res) => res.send('okk'))
@@ -51,6 +60,7 @@ app.use((err, req, res, next) => {
         message: errorMessage,
         stack: err.stack
     })
+
 })
 
 app.listen(3001, () => {
